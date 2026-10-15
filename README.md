@@ -1,4 +1,6 @@
-# Dragonfly Wing CFD
+# Dragonfly Wing CFD — Public Test Preview
+
+This is a public preview/test project, not the actual research code. Private research implementation and results are not included.
 
 OpenFOAM case files for a moving dragonfly wing, with meshing, a steady-state setup, and a transient `pimpleFoam` setup driven by tabulated motion.
 
