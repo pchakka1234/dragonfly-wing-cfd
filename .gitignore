@@ -1,0 +1,12 @@
+# OS/editor files
+.DS_Store
+*.swp
+# Generated simulation results (retain initial conditions in 0/)
+**/[1-9]*/
+**/0.*/
+**/processor*/
+**/postProcessing/
+**/polyMesh/
+**/extendedFeatureEdgeMesh/
+log.*
+*.foam

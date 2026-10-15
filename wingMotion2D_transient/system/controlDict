@@ -1,0 +1,48 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Version:  2512
+    \\  /    A nd           | Website:  www.openfoam.com
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+
+application     pimpleFoam;
+
+startFrom       startTime;
+startTime       0;
+stopAt          endTime;
+
+endTime         0.1;           // One full flap (assuming 40Hz)
+deltaT          2.5e-5;        // Fixed time step for the test
+
+writeControl    runTime;
+writeInterval   0.0005;        // Save every 0.5ms (50 frames total)
+
+purgeWrite      0;
+writeFormat     ascii;
+writePrecision  6;
+compression     off;
+runTimeModifiable true;
+
+// --- WE ADDED THIS BLOCK TO CALCULATE FORCES ---
+functions
+{
+    forces
+    {
+        type            forces;
+        libs            ("libforces.so");
+        writeControl    timeStep;
+        writeInterval   1;
+        patches         (dragonfly); 
+        rho             rhoInf;
+        rhoInf          1.225; // Standard density of air
+        CofR            (0 0 0); // Center of Rotation
+    }
+}

@@ -1,0 +1,20 @@
+FoamFile { version 2.0; format ascii; class dictionary; object topoSetDict; }
+actions
+(
+    {
+        name    movingZoneSet;
+        type    cellSet;
+        action  new;
+        source  cylinderToCell;
+        p1      (-0.00592 -0.01603 -0.06); 
+        p2      (-0.00592 -0.01603  0.06); 
+        radius  0.02;
+    }
+    {
+        name    movingZone;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;   // This is the fix for version 2512
+        set     movingZoneSet;
+    }
+);
